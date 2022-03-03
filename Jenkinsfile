@@ -35,7 +35,7 @@ pipeline {
                         always {
                             sh 'echo Publishing XML'
                             step([$class: 'JUnitResultArchiver', checksName: '', testResults: 'test.xml'])
-                            //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
+                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
                         }
 
                     }
@@ -195,6 +195,9 @@ pipeline {
         stage('weekly-build'){
             when {
                 environment name: 'GERRIT_BRANCH', value: 'develop'
+            }
+            triggers {
+                cron('20 23 * * *')
             }
             steps{
                 sh'echo weekly-build'
