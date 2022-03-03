@@ -4,6 +4,9 @@ pipeline {
             label 'BUILD' // use build label for the 4 runners
         }
     }
+    triggers {
+        cron('0 9 * * 1')
+    }
     options { timestamps () }
     stages {
         stage('build-test') {
@@ -18,6 +21,11 @@ pipeline {
             }
         }
         stage('Tests') {
+            when {
+                not {
+                    expression { return currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) }
+                }
+            }
             parallel {
                 stage('test1'){
                     agent { label 'BUILD' }
@@ -104,9 +112,12 @@ pipeline {
         stage('build-app'){
             when {
                 anyOf{
-                    environment name: 'GERRIT_BRANCH', value: 'develop'
-                    environment name: 'GERRIT_BRANCH', value: 'release'
-                    environment name: 'GERRIT_BRANCH', value: 'master'
+                    branch 'develop'
+                    branch 'release'
+                    branch 'main'
+                }
+                not {
+                    expression { return currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) }
                 }
             }
             parallel {
@@ -164,9 +175,12 @@ pipeline {
         stage('Distribute-app'){
             when {
                 anyOf{
-                    environment name: 'GERRIT_BRANCH', value: 'develop'
-                    environment name: 'GERRIT_BRANCH', value: 'release'
-                    environment name: 'GERRIT_BRANCH', value: 'master'
+                    branch 'develop'
+                    branch 'release'
+                    branch 'main'
+                }
+                not {
+                    expression { return currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) }
                 }
             }
             parallel {
@@ -194,10 +208,8 @@ pipeline {
         }
         stage('weekly-build'){
             when {
-                environment name: 'GERRIT_BRANCH', value: 'develop'
-            }
-            triggers {
-                cron('20 23 * * *')
+                branch 'develop'
+                expression { return currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) }
             }
             steps{
                 sh'echo weekly-build'
@@ -205,7 +217,7 @@ pipeline {
         }
         stage('Weekly-distribute'){
             when {
-                environment name: 'GERRIT_BRANCH', value: 'develop'
+                branch 'develop'
             }
             steps{
                 sh 'echo weekly distribute'
