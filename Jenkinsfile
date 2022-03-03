@@ -11,6 +11,11 @@ pipeline {
     stages {
         stage('build-test') {
             agent { label 'BUILD' }
+            when {
+                not {
+                    expression { return currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) }
+                }
+            }
             steps {
                 sh 'echo arjun > usefulfile.txt'
             }
