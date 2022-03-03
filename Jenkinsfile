@@ -53,6 +53,7 @@ pipeline {
                         always {
                             sh 'echo Publishing XML'
                             step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
+                            sh 'echo test'
                         }
 
                     }
