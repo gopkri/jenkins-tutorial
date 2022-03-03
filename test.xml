@@ -6,9 +6,9 @@
 
         <!-- If the test didn't pass, specify ONE of the following 3 cases -->
 
-        <!-- option 1 --> <skipped />
-<!--        &lt;!&ndash; option 2 &ndash;&gt; <failure message="my failure message">my stack trace</failure>-->
-<!--        &lt;!&ndash; option 3 &ndash;&gt; <error message="my error message">my crash report</error>-->
+        <!--        &lt;!&ndash; option 1 &ndash;&gt; <skipped />-->
+        <!-- option 2 --> <failure message="my failure message">my stack trace</failure>
+        <!--        &lt;!&ndash; option 3 &ndash;&gt; <error message="my error message">my crash report</error>-->
 
         <system-out>my STDOUT dump</system-out>
 
