@@ -116,11 +116,7 @@ pipeline {
         }
         stage('build-app'){
             when {
-                anyOf{
-                    branch 'develop'
-                    branch 'release'
-                    branch 'main'
-                }
+                anyOf { branch 'develop';branch 'main';branch 'release' }
                 not {
                     expression { return currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) }
                 }
@@ -179,11 +175,7 @@ pipeline {
         }
         stage('Distribute-app'){
             when {
-                anyOf{
-                    branch 'develop'
-                    branch 'release'
-                    branch 'main'
-                }
+                anyOf { branch 'develop';branch 'main';branch 'release' }
                 not {
                     expression { return currentBuild.rawBuild.getCause(hudson.triggers.TimerTrigger$TimerTriggerCause) }
                 }
