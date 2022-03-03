@@ -23,6 +23,8 @@ pipeline {
                     agent { label 'BUILD' }
                     steps {
                         sh 'echo  test1'
+                        sh '${JOB_NAME}'
+                        sh '${BUILD_NUMBER}'
 
                         copyArtifacts(projectName: '${JOB_NAME}',
                                 filter: '*.txt',
