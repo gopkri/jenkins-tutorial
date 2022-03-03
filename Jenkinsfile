@@ -26,11 +26,8 @@ pipeline {
                         sh 'echo ${JOB_NAME}'
                         sh 'echo ${BUILD_NUMBER}'
 
-                        copyArtifacts(projectName: '${JOB_NAME}',
-                                filter: '*.txt',
-                                fingerprintArtifacts: true,
-                                selector: specific('${BUILD_NUMBER}'))
-                                //selector: [$class: 'SpecificBuildSelector', buildNumber: '${BUILD_NUMBER}'])
+                        copyArtifacts filter: '*.txt', fingerprintArtifacts: true, projectName: '${JOB_NAME}', selector: specific('${BUILD_NUMBER}')
+
                         sh 'echo hi > test.xml'
                         sh 'cat  usefulfile.txt'
                     }
