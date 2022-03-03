@@ -34,7 +34,7 @@ pipeline {
                     post{
                         always {
                             sh 'echo Publishing XML'
-                            //step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
+                            step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
                         }
 
                     }
@@ -52,7 +52,7 @@ pipeline {
                     post{
                         always {
                             sh 'echo Publishing XML'
-                            //step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
+                            step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
                         }
 
                     }
@@ -70,7 +70,7 @@ pipeline {
                     post{
                         always {
                             sh 'echo Publishing XML'
-                            //step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
+                            step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
                         }
 
                     }
@@ -90,7 +90,7 @@ pipeline {
                     post{
                         always {
                             sh 'echo Publishing XML'
-                            //step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
+                            step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: true])
                         }
 
                     }
