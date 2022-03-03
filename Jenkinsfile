@@ -34,8 +34,8 @@ pipeline {
                     post{
                         always {
                             sh 'echo Publishing XML'
-                            //step([$class: 'JUnitResultArchiver', checksName: '', testResults: '*.xml'])
-                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
+                            step([$class: 'JUnitResultArchiver', checksName: '', testResults: 'test.xml'])
+                            //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
                         }
 
                     }
@@ -53,8 +53,8 @@ pipeline {
                     post{
                         always {
                             sh 'echo Publishing XML'
-                            //step([$class: 'JUnitResultArchiver', checksName: '', testResults: '*.xml'])
-                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
+                            step([$class: 'JUnitResultArchiver', checksName: '', testResults: 'test2.xml'])
+                            //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
                         }
 
                     }
@@ -72,8 +72,8 @@ pipeline {
                     post{
                         always {
                             sh 'echo Publishing XML'
-                            //step([$class: 'JUnitResultArchiver', checksName: '', testResults: '*.xml'])
-                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
+                            step([$class: 'JUnitResultArchiver', checksName: '', testResults: 'test2.xml'])
+                            //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
                         }
 
                     }
@@ -93,8 +93,8 @@ pipeline {
                     post{
                         always {
                             sh 'echo Publishing XML'
-                            //step([$class: 'JUnitResultArchiver', checksName: '', testResults: '*.xml'])
-                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
+                            step([$class: 'JUnitResultArchiver', checksName: '', testResults: 'test2.xml'])
+                            //publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '', reportFiles: '*.html', reportName: 'HTML Report', reportTitles: ''])
                         }
 
                     }
