@@ -29,7 +29,8 @@ pipeline {
                         copyArtifacts(projectName: '${JOB_NAME}',
                                 filter: '*.txt',
                                 fingerprintArtifacts: true,
-                                selector: [$class: 'SpecificBuildSelector', buildNumber: '${BUILD_NUMBER}'])
+                                selector: specific('${BUILD_NUMBER}'))
+                                //selector: [$class: 'SpecificBuildSelector', buildNumber: '${BUILD_NUMBER}'])
                         sh 'echo hi > test.xml'
                         sh 'cat  usefulfile.txt'
                     }
